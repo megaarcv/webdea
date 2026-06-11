@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Misi Rahasia Dea Adelia</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="particles"></div>
+
+<!-- INTRO -->
+
+<section class="hero">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<div class="left">
+
+<span class="badge">
+🔒 TOP SECRET
+</span>
+
+<h1>
+Halo,
+<span>Dea Adelia</span>
+</h1>
+
+<p>
+Kamu telah dipilih untuk menjalankan
+<b>Misi Rahasia</b> yang sangat penting.
+</p>
+
+<button id="startMission">
+Mulai Misi 🚀
+</button>
+
+</div>
+
+<div class="right">
+
+<div class="character-container">
+
+<img src="img/dea.png"
+class="character-head">
+
+<div class="character-body"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MISI 1 -->
+
+<section class="mission hidden" id="mission1">
+
+<h2>Misi 1 - Verifikasi Identitas</h2>
+
+<div class="card">
+
+<p>
+Sebelum lanjut, aku harus memastikan
+kamu memang Dea Adelia 😌
+</p>
+
+<p class="question">
+Siapa orang paling ganteng hari ini?
+</p>
+
+<div class="choices">
+
+<button class="correct">
+Ahmad 😎
+</button>
+
+<button class="wrong">
+Ahmadd
+</button>
+
+<button class="wrong">
+Akhmad
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MISI 2 -->
+
+<section class="mission hidden" id="mission2">
+
+<h2>Misi 2 - Tangkap Hati ❤️</h2>
+
+<p>
+Klik 10 hati yang muncul untuk
+melanjutkan misi.
+</p>
+
+<div id="heartArea"></div>
+
+<p>
+Score:
+<span id="score">
+0
+</span>/10
+</p>
+
+</section>
+
+<!-- MISI 3 -->
+
+<section class="mission hidden" id="mission3">
+
+<h2>Misi 3 - Analisa Target</h2>
+
+<div class="terminal">
+
+<p>> Menganalisa data...</p>
+<p>> Menghitung tingkat rasa penasaran...</p>
+<p>> Memindai target...</p>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="mission hidden" id="finalMission">
+
+<div class="final-card">
+
+<div class="character-container small">
+
+<img src="img/dea.png"
+class="character-head">
+
+<div class="character-body"></div>
+
+</div>
+
+<h2>
+🎉 Misi Berhasil Diselesaikan
+</h2>
+
+<p>
+Setelah investigasi panjang...
+</p>
+
+<p>
+Ternyata aku cuma mau ngajak
+kamu jalan minggu ini 😳❤️
+</p>
+
+<div class="final-buttons">
+
+<button id="yesBtn">
+MAU ❤️
+</button>
+
+<button id="noBtn">
+GAK MAU 😭
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- POPUP SUKSES -->
+
+<div id="successPopup">
+
+<h1>
+MISSION COMPLETE ❤️
+</h1>
+
+<p>
+Sampai ketemu di dunia nyata ya,
+Dea Adelia 😉
+</p>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
