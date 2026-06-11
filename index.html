@@ -82,17 +82,27 @@ Siapa orang paling ganteng hari ini?
 
 <div class="choices">
 
-<button class="correct">
-Ahmad 😎
-</button>
+const moveBtns = document.querySelectorAll(".moveBtn");
 
-<button class="wrong">
-Ahmadd
-</button>
+moveBtns.forEach(btn => {
 
-<button class="wrong">
-Akhmad
-</button>
+    btn.addEventListener("mouseover", () => {
+
+        const x =
+        Math.random() *
+        (window.innerWidth - 200);
+
+        const y =
+        Math.random() *
+        (window.innerHeight - 100);
+
+        btn.style.position = "fixed";
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+
+    });
+
+});
 
 </div>
 
