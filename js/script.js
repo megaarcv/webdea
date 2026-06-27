@@ -1,104 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const intro = document.getElementById("intro");
-    const m1 = document.getElementById("mission1");
-    const m2 = document.getElementById("mission2");
-    const m3 = document.getElementById("mission3");
-    const analysis = document.getElementById("analysis");
-    const final = document.getElementById("finalMission");
-    const popup = document.getElementById("successPopup");
+    const chatBox = document.getElementById("chatBox");
+    const userInput = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
 
-    // Jalankan Misi Pertama
-    document.getElementById("startMission").addEventListener("click", () => {
-        intro.classList.add("hidden");
-        m1.classList.remove("hidden");
-    });
+    // Set waktu awal pesan masuk
+    document.getElementById("initTime").innerText = getChatTime();
 
-    // Pindah Misi
-    document.querySelector(".correct").addEventListener("click", () => {
-        m1.classList.add("hidden");
-        m2.classList.remove("hidden");
-    });
-
-    document.querySelector(".correct2").addEventListener("click", () => {
-        m2.classList.add("hidden");
-        m3.classList.remove("hidden");
-    });
-
-    document.querySelector(".correct3").addEventListener("click", () => {
-        m3.classList.add("hidden");
-        analysis.classList.remove("hidden");
-        startTerminal();
-    });
-
-    // Efek Tombol Menghindar (Wrong Buttons)
-    const moveButtons = document.querySelectorAll(".moveBtn");
-    moveButtons.forEach(btn => {
-        const moveRandomly = () => {
-            const x = Math.random() * (window.innerWidth - btn.clientWidth - 50);
-            const y = Math.random() * (window.innerHeight - btn.clientHeight - 50);
-            btn.style.position = "fixed";
-            btn.style.left = `${x}px`;
-            btn.style.top = `${y}px`;
-        };
-        btn.addEventListener("mouseover", moveRandomly);
-        btn.addEventListener("click", moveRandomly);
-    });
-
-    // Efek Mengetik di Terminal Analisa
-    function startTerminal() {
-        const text = [
-            "> Mengumpulkan data jawaban...",
-            "> Menganalisa tingkat keniatan web ini...",
-            "> Mendeteksi detak jantung pembuat web...",
-            "> Hasil: Ahmad fix naksir Dea Adelia. ❤",
-            "> Membuka berkas rahasia final..."
-        ];
-        let line = 0;
-        let charIdx = 0;
-        const terminal = document.getElementById("terminalText");
-
-        function type() {
-            if (line < text.length) {
-                if (charIdx < text[line].length) {
-                    terminal.innerHTML += text[line].charAt(charIdx);
-                    charIdx++;
-                    setTimeout(type, 30);
-                } else {
-                    terminal.innerHTML += "<br>";
-                    line++;
-                    charIdx = 0;
-                    setTimeout(type, 800);
-                }
-            } else {
-                setTimeout(() => {
-                    analysis.classList.add("hidden");
-                    final.classList.remove("hidden");
-                }, 1500);
-            }
-        }
-        type();
+    // Fungsi mendapatkan jam menit saat ini
+    function getChatTime() {
+        const now = new Date();
+        return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
     }
 
-    // Tombol "GAK MAU" Menghindar di Bagian Akhir
-    const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * (window.innerWidth - noBtn.clientWidth - 50);
-        const y = Math.random() * (window.innerHeight - noBtn.clientHeight - 50);
-        noBtn.style.position = "fixed";
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-    });
+    // Database Jawaban Ahmad AI
+    function dapatkanBalasanBot(pesanUser) {
+        const text = pesanUser.toLowerCase();
 
-    // Jawaban Sukses (MAU)
-    document.getElementById("yesBtn").addEventListener("click", () => {
-        popup.style.display = "block";
-        
-        // Ganti nomor WhatsApp di bawah ini dengan nomor Anda (format internasional tanpa '+')
-        const nomorWA = "6281234567890"; 
-        const pesan = encodeURIComponent("Misi Selesai Ahmad! Aku mau kok diajak jalan minggu ini 😳❤");
-        
+        if (text.includes("halo") || text.includes("hai") || text.includes("p ")) {
+            return "Halo juga Dea cantik! Lagi apa nih? 🌸";
+        }
+        if (text.includes("kangen") || text.includes("rindu")) {
+            return "Ciyeee kangen ya? Padahal aku di sini mikirin kamu terus tiap detik tahu! 😳❤️";
+        }
+        if (text.includes("jalan") || text.includes("main")) {
+            return "AYOK! Minggu ini ya? Jangan ngeles lagi, pokoknya aku jemput ganti baju yang rapi! 🚗💨";
+        }
+        if (text.includes("ganteng")) {
+            return "Makasih loh pujiannya, jadi makin sayang kan akunya... 😎❤️";
+        }
+        if (text.includes("apa kabar") || text.includes("gimana")) {
+            return "Kabar baik kalau liat kamu senyum pas baca chat ini. Hehe.";
+        }
+        if (text.includes("sayang") || text.includes("suka")) {
+            return "Aduh jantung aku langsung jedag-jedug baca ini! Mau denger langsung dong pas kita jalan besok 😣❤️";
+        }
+        if (text.includes("lucu") || text.includes("wkwk") || text.includes("wkwkwk") || text.includes("haha")) {
+            return "Nah gitu dong ketawa, makin manis tau kalau senyum begitu. 😍";
+        }
+
+        // Jawaban default jika kata kunci tidak cocok
+        const balasanAcak = [
+            "Eh gimana-gimana? Aku salting nih dichat kamu terus 🤣",
+            "Niat banget kan aku bikin ginian? Makanya jalan yuk minggu ini! 😎",
+            "Maksudnya gimana tuh? Coba jelasin pas kita ketemu langsung aja nanti.",
+            "Kamu ngetik apa aja bebas kok, yang penting ujung-ujungnya kamu mau diajak jalan ya? ❤️"
+        ];
+        return balasanAcak[Math.floor(Math.random() * balasanAcak.length)];
+    }
+
+    // Fungsi Mengirim Pesan
+    function kirimPesan() {
+        const pesan = userInput.value.trim();
+        if (pesan === "") return;
+
+        // 1. Tampilkan pesan user ke layar
+        const userBubble = document.createElement("div");
+        userBubble.className = "message user-msg";
+        userBubble.innerHTML = `<p>${pesan}</p><span class="time">${getChatTime()}</span>`;
+        chatBox.appendChild(userBubble);
+
+        // Bersihkan input teks
+        userInput.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // 2. Efek Loading Mengetik Bot (Delay 1 detik agar terasa nyata)
         setTimeout(() => {
-            window.location.href = `https://whatsapp.com{nomorWA}&text=${pesan}`;
-        }, 3000);
+            const balasan = dapatkanBalasanBot(pesan);
+            const botBubble = document.createElement("div");
+            botBubble.className = "message bot-msg";
+            botBubble.innerHTML = `<p>${balasan}</p><span class="time">${getChatTime()}</span>`;
+            chatBox.appendChild(botBubble);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 1000);
+    }
+
+    // Event Trigger Klik & Enter
+    sendBtn.addEventListener("click", kirimPesan);
+    userInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") kirimPesan();
     });
 });
