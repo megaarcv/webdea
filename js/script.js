@@ -1,293 +1,104 @@
-const startBtn = document.getElementById("startMission");
+document.addEventListener("DOMContentLoaded", () => {
+    const intro = document.getElementById("intro");
+    const m1 = document.getElementById("mission1");
+    const m2 = document.getElementById("mission2");
+    const m3 = document.getElementById("mission3");
+    const analysis = document.getElementById("analysis");
+    const final = document.getElementById("finalMission");
+    const popup = document.getElementById("successPopup");
 
-const mission1 = document.getElementById("mission1");
-const mission2 = document.getElementById("mission2");
-const mission3 = document.getElementById("mission3");
-const finalMission = document.getElementById("finalMission");
-
-const scoreText = document.getElementById("score");
-const heartArea = document.getElementById("heartArea");
-
-const result = document.getElementById("result");
-
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-
-const successPopup = document.getElementById("successPopup");
-
-let score = 0;
-
-/* =====================
-   START MISSION
-===================== */
-
-startBtn.addEventListener("click", () => {
-
-    document.querySelector(".hero").style.display = "none";
-
-    mission1.classList.remove("hidden");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    // Jalankan Misi Pertama
+    document.getElementById("startMission").addEventListener("click", () => {
+        intro.classList.add("hidden");
+        m1.classList.remove("hidden");
     });
 
-});
-
-
-/* =====================
-   MISSION 1
-===================== */
-
-document.querySelector(".correct")
-.addEventListener("click", () => {
-
-    alert("Jawaban benar 😎");
-
-    mission1.classList.add("hidden");
-    mission2.classList.remove("hidden");
-
-    startHeartGame();
-
-});
-
-document.querySelectorAll(".wrong")
-.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        alert("Hmm... kayaknya kurang tepat 🤨");
-
+    // Pindah Misi
+    document.querySelector(".correct").addEventListener("click", () => {
+        m1.classList.add("hidden");
+        m2.classList.remove("hidden");
     });
 
-});
-
-
-/* =====================
-   HEART GAME
-===================== */
-
-function startHeartGame(){
-
-    heartArea.innerHTML = "";
-
-    for(let i=0;i<10;i++){
-
-        createHeart();
-
-    }
-
-}
-
-function createHeart(){
-
-    const heart = document.createElement("div");
-
-    heart.classList.add("heart");
-
-    heart.innerHTML = "❤️";
-
-    heart.style.left =
-        Math.random()*90 + "%";
-
-    heart.style.top =
-        Math.random()*80 + "%";
-
-    heart.addEventListener("click", () => {
-
-        heart.remove();
-
-        score++;
-
-        scoreText.innerText = score;
-
-        if(score >= 10){
-
-            setTimeout(() => {
-
-                mission2.classList.add("hidden");
-
-                mission3.classList.remove("hidden");
-
-                runAnalysis();
-
-            }, 500);
-
-        }
-
+    document.querySelector(".correct2").addEventListener("click", () => {
+        m2.classList.add("hidden");
+        m3.classList.remove("hidden");
     });
 
-    heartArea.appendChild(heart);
+    document.querySelector(".correct3").addEventListener("click", () => {
+        m3.classList.add("hidden");
+        analysis.classList.remove("hidden");
+        startTerminal();
+    });
 
-}
+    // Efek Tombol Menghindar (Wrong Buttons)
+    const moveButtons = document.querySelectorAll(".moveBtn");
+    moveButtons.forEach(btn => {
+        const moveRandomly = () => {
+            const x = Math.random() * (window.innerWidth - btn.clientWidth - 50);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight - 50);
+            btn.style.position = "fixed";
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        };
+        btn.addEventListener("mouseover", moveRandomly);
+        btn.addEventListener("click", moveRandomly);
+    });
 
+    // Efek Mengetik di Terminal Analisa
+    function startTerminal() {
+        const text = [
+            "> Mengumpulkan data jawaban...",
+            "> Menganalisa tingkat keniatan web ini...",
+            "> Mendeteksi detak jantung pembuat web...",
+            "> Hasil: Ahmad fix naksir Dea Adelia. ❤",
+            "> Membuka berkas rahasia final..."
+        ];
+        let line = 0;
+        let charIdx = 0;
+        const terminal = document.getElementById("terminalText");
 
-/* =====================
-   ANALISA TARGET
-===================== */
-
-function runAnalysis(){
-
-    result.innerHTML = "";
-
-    const lines = [
-
-        "> Memeriksa database...",
-        "> Menemukan target...",
-        "> Mengukur tingkat kelucuan...",
-        "> Menghitung kemungkinan jalan bareng...",
-        "> TARGET DITEMUKAN!",
-        "",
-        "😳 Ahmad ternyata mau ngajak Dea jalan..."
-    ];
-
-    let i = 0;
-
-    const interval = setInterval(() => {
-
-        result.innerHTML +=
-        lines[i] + "<br>";
-
-        i++;
-
-        if(i >= lines.length){
-
-            clearInterval(interval);
-
-            setTimeout(() => {
-
-                mission3.classList.add("hidden");
-
-                finalMission.classList.remove("hidden");
-
-            }, 2500);
-
-        }
-
-    }, 1000);
-
-}
-
-
-/* =====================
-   TOMBOL KABUR
-===================== */
-
-function moveButton(){
-
-    const maxX =
-        window.innerWidth - 180;
-
-    const maxY =
-        window.innerHeight - 100;
-
-    const randomX =
-        Math.random() * maxX;
-
-    const randomY =
-        Math.random() * maxY;
-
-    noBtn.style.position = "fixed";
-
-    noBtn.style.left =
-        randomX + "px";
-
-    noBtn.style.top =
-        randomY + "px";
-
-}
-
-noBtn.addEventListener(
-    "mouseover",
-    moveButton
-);
-
-noBtn.addEventListener(
-    "click",
-    moveButton
-);
-
-
-/* =====================
-   MAU
-===================== */
-
-yesBtn.addEventListener("click", () => {
-
-    successPopup.style.display = "flex";
-
-    createConfetti();
-
-});
-
-
-/* =====================
-   CONFETTI
-===================== */
-
-function createConfetti(){
-
-    for(let i=0;i<150;i++){
-
-        const confetti =
-            document.createElement("div");
-
-        confetti.style.position = "fixed";
-
-        confetti.style.left =
-            Math.random()*100 + "vw";
-
-        confetti.style.top =
-            "-20px";
-
-        confetti.style.width =
-            "10px";
-
-        confetti.style.height =
-            "10px";
-
-        confetti.style.background =
-            `hsl(${Math.random()*360},
-            100%,50%)`;
-
-        confetti.style.zIndex = 99999;
-
-        confetti.style.borderRadius = "50%";
-
-        document.body.appendChild(confetti);
-
-        let fall =
-            Math.random()*5+3;
-
-        confetti.animate(
-
-        [
-            {
-                transform:
-                "translateY(0)"
-            },
-
-            {
-                transform:
-                `translateY(
-                ${window.innerHeight+200}px)`
+        function type() {
+            if (line < text.length) {
+                if (charIdx < text[line].length) {
+                    terminal.innerHTML += text[line].charAt(charIdx);
+                    charIdx++;
+                    setTimeout(type, 30);
+                } else {
+                    terminal.innerHTML += "<br>";
+                    line++;
+                    charIdx = 0;
+                    setTimeout(type, 800);
+                }
+            } else {
+                setTimeout(() => {
+                    analysis.classList.add("hidden");
+                    final.classList.remove("hidden");
+                }, 1500);
             }
-
-        ],
-
-        {
-            duration:
-            fall*1000,
-
-            iterations:1
-        });
-
-        setTimeout(() => {
-
-            confetti.remove();
-
-        }, fall*1000);
-
+        }
+        type();
     }
 
-  }
+    // Tombol "GAK MAU" Menghindar di Bagian Akhir
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - noBtn.clientWidth - 50);
+        const y = Math.random() * (window.innerHeight - noBtn.clientHeight - 50);
+        noBtn.style.position = "fixed";
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+    });
+
+    // Jawaban Sukses (MAU)
+    document.getElementById("yesBtn").addEventListener("click", () => {
+        popup.style.display = "block";
+        
+        // Ganti nomor WhatsApp di bawah ini dengan nomor Anda (format internasional tanpa '+')
+        const nomorWA = "6281234567890"; 
+        const pesan = encodeURIComponent("Misi Selesai Ahmad! Aku mau kok diajak jalan minggu ini 😳❤");
+        
+        setTimeout(() => {
+            window.location.href = `https://whatsapp.com{nomorWA}&text=${pesan}`;
+        }, 3000);
+    });
+});
