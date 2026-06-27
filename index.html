@@ -1,229 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Misi Rahasia Dea ❤️</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misi Rahasia Dea ❤️</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link href="https://googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- EFFECT -->
-<div id="stars"></div>
-<div id="sakura-container"></div>
-<div id="hearts-container"></div>
-
-<!-- MASKOT DEA -->
-<div id="deaMascot">
-
-<img src="img/dea.png" alt="Dea">
-
-<div class="bubble">
-Halo Ahmad 😚
-</div>
-
-</div>
-
-<!-- INTRO -->
-<section id="intro">
-
-<div class="intro-card">
-
-<div class="top-secret">
-🔒 TOP SECRET
-</div>
-
-<h1>
-Halo Dea Adelia ❤️
-</h1>
-
-<p>
-Kamu telah dipilih untuk menjalankan misi rahasia.
-</p>
-
-<p>
-⚠️ Hanya Dea Adelia yang boleh membuka misi ini.
-</p>
-
-<button id="startMission">
-Buka Misi Rahasia 🚀
-</button>
-
-</div>
-
-</section>
-
-<!-- MISI 1 -->
-<section class="mission hidden" id="mission1">
-
-<div class="card">
-
-<h2>🕵️ Misi 1</h2>
-
-<p>
-Siapa orang paling ganteng hari ini?
-</p>
-
-<div class="choices">
-
-<button class="correct">
-Ahmad 😎
-</button>
-
-<button class="wrong moveBtn">
-Budi 😭
-</button>
-
-<button class="wrong moveBtn">
-Ronaldo 😭
-</button>
-
-<button class="wrong moveBtn">
-Tetangga 😭
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MISI 2 -->
-<section class="mission hidden" id="mission2">
-
-<div class="card">
-
-<h2>🌸 Misi 2</h2>
-
-<p>
-Kalau ada orang bikin website khusus buat kamu, itu termasuk?
-</p>
-
-<div class="choices">
-
-<button class="correct2">
-Niat Banget ❤️
-</button>
-
-<button class="wrong moveBtn">
-Aneh 😭
-</button>
-
-<button class="wrong moveBtn">
-Gabut 😭
-</button>
-
-<button class="wrong moveBtn">
-Bingung 😵
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MISI 3 -->
-<section class="mission hidden" id="mission3">
-
-<div class="card">
-
-<h2>💖 Misi 3</h2>
-
-<p>
-Menurut kamu orang yang bikin website ini:
-</p>
-
-<div class="choices">
-
-<button class="wrong moveBtn">
-Iseng 😭
-</button>
-
-<button class="wrong moveBtn">
-Gabut 😭
-</button>
-
-<button class="correct3">
-Lagi suka seseorang 😳
-</button>
-
-<button class="wrong moveBtn">
-Hacker NASA 👨‍💻
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ANALISA -->
-<section class="mission hidden" id="analysis">
-
-<div class="terminal">
-
-<div id="terminalText"></div>
-
-</div>
-
-</section>
-
-<!-- FINAL -->
-<section class="mission hidden" id="finalMission">
-
-<div class="card">
-
-<img src="img/dea.png" class="final-dea">
-
-<h2>
-😳 Setelah Investigasi Panjang...
-</h2>
-
-<p>
-Ternyata Ahmad cuma mau ngajak Dea jalan minggu ini ❤️
-</p>
-
-<div class="final-buttons">
-
-<button id="yesBtn">
-❤️ MAU
-</button>
-
-<button id="noBtn">
-😭 GAK MAU
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SUCCESS -->
-<div id="successPopup">
-
-<h1>
-MISSION COMPLETE ❤️
-</h1>
-
-<p>
-Yaelah... niat banget bikin website segala 🤣❤️
-</p>
-
-<p>
-Membuka WhatsApp...
-</p>
-
-</div>
-
-<script src="js/script.js"></script>
-
+    <!-- EFFECT BACKGROUND -->
+    <div id="stars"></div>
+    <div id="sakura-container"></div>
+    <div id="hearts-container"></div>
+
+    <!-- MASKOT DEA -->
+    <div id="deaMascot">
+        <img src="img/dea.png" alt="Dea">
+        <div class="bubble">Halo Ahmad 😚</div>
+    </div>
+
+    <!-- INTRO -->
+    <section id="intro">
+        <div class="intro-card">
+            <div class="top-secret">🔒 TOP SECRET</div>
+            <h1>Halo Dea Adelia ❤️</h1>
+            <p>Kamu telah dipilih untuk menjalankan misi rahasia.</p>
+            <p>⚠️ Hanya Dea Adelia yang boleh membuka misi ini.</p>
+            <button id="startMission">Buka Misi Rahasia 🚀</button>
+        </div>
+    </section>
+
+    <!-- MISI 1 -->
+    <section class="mission hidden" id="mission1">
+        <div class="card">
+            <h2>🕵️ Misi 1</h2>
+            <p>Siapa orang paling ganteng hari ini?</p>
+            <div class="choices">
+                <button class="correct">Ahmad 😎</button>
+                <button class="wrong moveBtn">Budi 😭</button>
+                <button class="wrong moveBtn">Ronaldo 😭</button>
+                <button class="wrong moveBtn">Tetangga 😭</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISI 2 -->
+    <section class="mission hidden" id="mission2">
+        <div class="card">
+            <h2>🌸 Misi 2</h2>
+            <p>Kalau ada orang bikin website khusus buat kamu, itu termasuk?</p>
+            <div class="choices">
+                <button class="correct2">Niat Banget ❤️</button>
+                <button class="wrong moveBtn">Aneh 😭</button>
+                <button class="wrong moveBtn">Gabut 😭</button>
+                <button class="wrong moveBtn">Bingung 😵</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISI 3 -->
+    <section class="mission hidden" id="mission3">
+        <div class="card">
+            <h2>💖 Misi 3</h2>
+            <p>Menurut kamu orang yang bikin website ini:</p>
+            <div class="choices">
+                <button class="wrong moveBtn">Iseng 😭</button>
+                <button class="wrong moveBtn">Gabut 😭</button>
+                <button class="correct3">Lagi suka seseorang 😳</button>
+                <button class="wrong moveBtn">Hacker NASA 👨‍💻</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANALISA -->
+    <section class="mission hidden" id="analysis">
+        <div class="terminal">
+            <div id="terminalText"></div>
+        </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="mission hidden" id="finalMission">
+        <div class="card">
+            <img src="img/dea.png" class="final-dea" alt="Dea Final">
+            <h2>😳 Setelah Investigasi Panjang...</h2>
+            <p>Ternyata Ahmad cuma mau ngajak Dea jalan minggu ini ❤️</p>
+            <div class="final-buttons">
+                <button id="yesBtn">❤️ MAU</button>
+                <button id="noBtn">😭 GAK MAU</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS POPUP -->
+    <div id="successPopup">
+        <h1>MISSION COMPLETE ❤️</h1>
+        <p>Yaelah... niat banget bikin website segala 🤣❤️</p>
+        <p>Membuka WhatsApp...</p>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
